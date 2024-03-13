@@ -1,12 +1,12 @@
 def solution():
     n = int(input())
     people = list(map(int, input().split()))
-    result = [0] * n
+    result = float("inf")
     for i in range(n):
+        sum = 0
         for j in range(n):
-            if i == j:
-                continue
-            result[i] += people[j] * abs((j - i))
-    print(min(result))
+            sum += people[j] * abs((j - i))
+        result = min(result, sum)    
+    print(result)
 
 solution()
