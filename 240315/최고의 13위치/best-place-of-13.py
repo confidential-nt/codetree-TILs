@@ -10,7 +10,7 @@ def solution():
             di = i
             dj = j + 2
             if 0 <= di < N and 0 <= dj < N:
-                result = matrix[di][i:dj+1].count(1)
+                result = matrix[di][j:dj+1].count(1)
                 max_count = max(result, max_count)
     print(max_count)
 
