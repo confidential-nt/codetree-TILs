@@ -1,16 +1,14 @@
-import sys
-
 def solution():
     N = int(input())
     arr = [tuple(map(int, input().split())) for _ in range(N)]
     
-    min_distance = sys.maxsize
+    min_distance = float("inf")
     for i in range(1, N - 1):
-        temp = arr[i]
-        arr[i] = (0,0)
-        distance = get_distance(arr, N)
+        temp = arr
+        arr = arr[:i] + arr[i+1:]
+        distance = get_distance(arr, len(arr))
         min_distance = min(distance, min_distance)
-        arr[i] = temp
+        arr = temp
     print(min_distance)
 
 def get_distance(arr, N):
