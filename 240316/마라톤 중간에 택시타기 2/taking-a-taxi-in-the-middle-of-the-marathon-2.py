@@ -4,11 +4,9 @@ def solution():
     
     min_distance = float("inf")
     for i in range(1, N - 1):
-        temp = arr
-        arr = arr[:i] + arr[i+1:]
-        distance = get_distance(arr, len(arr))
+        distance = get_distance(arr[:i] + arr[i+1:], N - 1)
         min_distance = min(distance, min_distance)
-        arr = temp
+        
     print(min_distance)
 
 def get_distance(arr, N):
