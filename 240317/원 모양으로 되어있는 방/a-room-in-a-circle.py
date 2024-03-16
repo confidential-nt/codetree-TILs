@@ -7,9 +7,12 @@ def solution():
         for j in range(N):
             if j - i > 0:
                 dist += arr[j] * (j - i)
+                # print(i, "->", j, arr[j] * (j - i))
             elif j - i < 0:
-                dist += arr[j] * (N - 1 - i + abs(j - i))    
-        min_distance = min(min_distance, dist)    
+                dist += arr[j] * (N - i + j)    
+                # print(i, "->", j, arr[j] * (N - 1 - i + j))
+        min_distance = min(min_distance, dist)
+        # print(i, min_distance)    
     print(min_distance) 
     
 
