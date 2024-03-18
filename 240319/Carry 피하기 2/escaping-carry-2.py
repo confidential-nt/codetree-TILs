@@ -3,7 +3,7 @@ def solution():
     nums = [int(input()) for _ in range(n)]
     answer = -1
     for i in range(n):
-        for j in range(i+1,n):
+        for j in range(i+1,n): # 이런 디테일 매우 중요!
             for k in range(j+1,n):
                 if not is_carry(nums[i],nums[j],nums[k]):
                     answer = max(answer, nums[i] + nums[j] + nums[k])
