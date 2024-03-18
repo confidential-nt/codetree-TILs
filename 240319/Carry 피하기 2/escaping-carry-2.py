@@ -10,21 +10,21 @@ def solution():
     print(answer)
 
 def is_carry(a,b,c):
-    l_a = [int(el) for el in str(a)][::-1]
-    l_b = [int(el) for el in str(b)][::-1]
-    l_c = [int(el) for el in str(c)][::-1]
+    # 숫자의 범위는 1 <= x <= 10,000 : 10000끼리 더해봤자 carry 없으므로,
+    # 결국 천의 자리 숫자까지만 carry 발생하는지 비교하면 됨.
+
+    if a % 10 + b % 10 + c % 10 >= 10:
+        return True
     
-    max_len = max(len(l_a), len(l_b), len(l_c))
+    if a % 100 // 10 + b % 100 // 10 + c % 100 // 10 >= 10:
+        return True
+    
+    if a % 1000 // 100 + b % 1000 // 100 + c % 1000 // 100 >= 10:
+        return True
 
-    for i in range(max_len):
-        a_el = l_a[i] if len(l_a) >= i + 1 else 0
-        b_el = l_b[i] if len(l_b) >= i + 1 else 0
-        c_el = l_c[i] if len(l_c) >= i + 1 else 0
-        
-        sums = a_el + b_el + c_el
-        if sums >= 10:
-            return True
+    if a % 10000 // 1000 + b % 10000 // 1000 + c % 10000 // 1000 >= 10:
+        return True
+
     return False
-
 
 solution()
