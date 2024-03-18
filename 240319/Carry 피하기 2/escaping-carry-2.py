@@ -1,10 +1,10 @@
 def solution():
     n = int(input())
     nums = [int(input()) for _ in range(n)]
-    answer = 0
+    answer = -1
     for i in range(n):
-        for j in range(n):
-            for k in range(n):
+        for j in range(i+1,n):
+            for k in range(j+1,n):
                 if not is_carry(nums[i],nums[j],nums[k]):
                     answer = max(answer, nums[i] + nums[j] + nums[k])
     print(answer)
