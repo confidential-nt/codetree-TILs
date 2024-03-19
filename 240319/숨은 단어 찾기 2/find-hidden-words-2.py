@@ -7,8 +7,8 @@ def solution():
         for j in range(M):
             if arr[i][j] != "L":
                 continue
-            
             for dx, dy in directions:
+                # 여기 주의! e_count가 2가 안된 상황에서도 새로 초기화 되어야함.
                 e_count = 0
                 current_x = i
                 current_y = j
