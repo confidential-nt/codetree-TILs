@@ -14,6 +14,7 @@ def solution():
                 current_x = i
                 current_y = j
                 while True: # 이렇게 상,하,좌,우,대각선 방향으로 어떻게 탐색할 것인지 생각을 못했음.
+                    # 입력이 이렇게 작은 상황에서는 무한 루프 돌아도 ㅇㅋ.
                     nx = current_x + dx
                     ny = current_y + dy
                     if not (0 <= nx < 19 and 0<= ny < 19):
