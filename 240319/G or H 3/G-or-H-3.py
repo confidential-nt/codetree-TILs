@@ -8,7 +8,7 @@ def solution():
         loc = int(loc)
         input_dict[loc] = 2 if alpha == "H" else 1
     arr = list(input_dict.keys())
-    R = 10000
+    R = 10000 # 위치의 범위가 10000으로 고정되어있다는 점에 유의.
     placed = [0] * (R + 1)
 
     for el in arr:
