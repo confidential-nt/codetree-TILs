@@ -8,10 +8,10 @@ def solution():
             if arr[i][j] != "L":
                 continue
             
-            e_count = 0
-            current_x = i
-            current_y = j
             for dx, dy in directions:
+                e_count = 0
+                current_x = i
+                current_y = j
                 while True:
                     nx = current_x + dx
                     ny = current_y + dy
@@ -22,10 +22,11 @@ def solution():
                     e_count += 1
                     current_x = nx
                     current_y = ny
+                    
                     if e_count == 2:
                         count += 1
                         break
-    print(count + 1)
+    print(count)
 
 
 solution()
