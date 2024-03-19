@@ -6,7 +6,7 @@ def solution():
         for j in range(N - 2):
             for l in range(N):
                 for k in range(N - 2):
-                    if abs(j - k) < 3 :
+                    if N > 3 and abs(j - k) < 3 :
                         continue
                     count1 = arr[i][j] + arr[i][j + 1] + arr[i][j + 2]
                     count2 = arr[l][k] + arr[l][k + 1] + arr[l][k + 2]
