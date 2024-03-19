@@ -8,7 +8,7 @@ def solution():
         loc = int(loc)
         input_dict[loc] = 2 if alpha == "H" else 1
     arr = list(input_dict.keys())
-    R = max(arr)
+    R = 10000
     placed = [0] * (R + 1)
 
     for el in arr:
