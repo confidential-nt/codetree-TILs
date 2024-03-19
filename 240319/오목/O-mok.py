@@ -13,7 +13,7 @@ def solution():
                 count = 1
                 current_x = i
                 current_y = j
-                while True:
+                while True: # 이렇게 상,하,좌,우,대각선 방향으로 어떻게 탐색할 것인지 생각을 못했음.
                     nx = current_x + dx
                     ny = current_y + dy
                     if not (0 <= nx < 19 and 0<= ny < 19):
