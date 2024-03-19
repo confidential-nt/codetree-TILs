@@ -1,66 +1,33 @@
-from collections import deque
+import sys
 
 def solution():
-    board = [
-        list(map(int, input().split())) for _ in range(19)
-    ]
-    visited = [[False] * 19 for _ in range(19)]
-    one_win = False
-    one_trail = []
-    two_win = False
-    two_trail = []
-    
-    def bfs(start, num):
-        queue = deque()
-        directions = [(1,0),(0,1),(-1,0),(0,-1),(1,1),(1,-1),(-1,1),(-1,-1)]
+    board = [list(map(int, input().split())) for _ in range(19)]
+    directions = [(1,0),(0,1),(-1,0),(0,-1),(1,1),(-1,1),(1,-1),(-1,-1)]
 
-        queue.append(start)
-        visited[start[0]][start[1]] = True
-        count = 1
-        trail = [start]
-        while queue:
-            qx,qy = queue.popleft()
-
-            for dx,dy in directions:
-                nx,ny = qx + dx, qy + dy
-
-                if not visited[nx][ny] and board[nx][ny] == num:
-                    visited[nx][ny] = True
-                    queue.append((nx,ny))
-                    trail.append((nx,ny))
+    for i in range(19):
+        for j in range(19):
+            if board[i][j] == 0:
+                continue
+            
+            for dx,dy in directions: # 한 방향에 대해서
+                count = 1
+                current_x = i
+                current_y = j
+                while True:
+                    nx = current_x + dx
+                    ny = current_y + dy
+                    if not (0 <= nx < 19 and 0<= ny < 19):
+                        break
+                    if board[nx][ny] != board[i][j]:
+                        break
                     count += 1
-                    
-        if count == 5:
-            return [trail, count]
-        else:
-            return [[],count]
-    # 1 탐색
-    for i in range(19):
-        for j in range(19):
-            if not visited[i][j] and board[i][j] == 1:
-                trail, count = bfs((i,j),1)
-                if count == 5:
-                    one_win = True
-                    one_trail = trail
-    # 2 탐색
-    for i in range(19):
-        for j in range(19):
-            if not visited[i][j] and board[i][j] == 2:
-                trail, count = bfs((i,j),2)
-                if count == 5:
-                    two_win = True
-                    two_trail = trail
+                    current_x = nx
+                    current_y = ny
 
-    if two_win:
-        print("2")
-        print(*[el + 1 for el in two_trail[2]])
-    elif one_win:
-        print("1")
-        print(*[el + 1 for el in one_trail[2]])    
-    else:
-        print("0")
-
-
-
+                    if count == 5:
+                        print(board[i][j])
+                        print(i + 2 * dx + 1, j + 2 * dy + 1)
+                        sys.exit()
+    print(0)
 
 solution()
