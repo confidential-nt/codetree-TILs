@@ -4,7 +4,7 @@ def solution():
     N,M = map(int, input().split())
     A = list(map(int, input().split()))
     B = list(map(int, input().split()))
-    all_combinations = set(list(permutations(B, len(B))))
+    all_combinations = set(permutations(B, len(B)))
     
     count = 0
     for i in range(N):
