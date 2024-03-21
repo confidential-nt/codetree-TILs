@@ -8,10 +8,10 @@ def solution():
         placed[coord] += num_of_candy
 
     max_count = 0
-    for c in range(101 - K): # 중심점
-        if c - K < 0 :
-            continue
-        arr = placed[c - K:c + K + 1]
+    for c in range(1,101 - K): # 중심점
+        start = 0 if c - K < 0 else c - K
+            
+        arr = placed[start:c + K + 1]
         count = 0
         for el in arr:
             count += el
