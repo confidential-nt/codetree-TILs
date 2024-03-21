@@ -7,6 +7,10 @@ def solution():
         num_of_candy, coord = map(int, input().split())
         placed[coord] += num_of_candy
 
+    if K >= 100:
+        print(sum(placed))
+        return
+
     max_count = 0
     for c in range(1,101 - K): # 중심점
         start = 0 if c - K < 0 else c - K
