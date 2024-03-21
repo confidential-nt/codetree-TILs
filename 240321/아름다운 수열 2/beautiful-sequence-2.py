@@ -1,19 +1,14 @@
-from itertools import permutations
-
 def solution():
     N,M = map(int, input().split())
     A = list(map(int, input().split()))
     B = list(map(int, input().split()))
-    all_permutations = set(permutations(B,M))
-    
+
     count = 0
-    for i in range(N):
+    for i in range(N - M + 1):
         piece = A[i:i+M]
-        if len(piece) != M:
-            break
-        for perm in all_permutations:
-            if tuple(piece) == perm:
-                count += 1
+        if sorted(piece) == sorted(B):
+            count += 1
+
     print(count)
 
 
