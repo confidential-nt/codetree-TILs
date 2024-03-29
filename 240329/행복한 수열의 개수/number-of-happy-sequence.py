@@ -16,6 +16,7 @@ def solution():
                 continue
             before = 0
             count = 0
+            end = False
             for col in range(n):
                 current = arr[i][col]
                 if current == before:
@@ -23,9 +24,11 @@ def solution():
                 else:
                     if count >= m:
                         answer += 1
+                        end = True
+                        break
                     before = current
                     count = 1  
-            if count >= m:
+            if not end and count >= m:
                 answer += 1
 
     # 열
@@ -34,7 +37,8 @@ def solution():
             if i + n - 1 >= n:
                 continue
             count = 0  
-            before = 0  
+            before = 0
+            end = False  
             for row in range(n):
                 current = arr[row][j]
                 if current == before:
@@ -42,9 +46,11 @@ def solution():
                 else:
                     if count >= m:
                         answer += 1
+                        end = True
+                        break
                     before = current
                     count = 1
-            if count >= m :
+            if not end and count >= m :
                 answer += 1
             
     print(answer)
