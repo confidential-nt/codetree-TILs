@@ -5,7 +5,7 @@ def solution():
     # 연속으로 m개 이상 같은 숫자가 등장하는지 확인.
 
     # 연속으로 m개이상 같은 숫자가 등장하는지 어떻게 확인? 
-    # 행의 경우: i고정, 열의 경우 n까지 루프. -> before, current를 통해 숫자 비교 -> 같다면 count += 1 / 다르다면 count 냅두거나 0으로 초기화
+    # 행의 경우: i고정, 열의 경우 n까지 루프. -> before, current를 통해 숫자 비교 -> 같다면 count += 1 / 다르다면 count 냅두거나 1로 초기화
     n,m = map(int, input().split())
     arr = [list(map(int, input().split())) for _ in range(n)]
     answer = 0
@@ -22,10 +22,10 @@ def solution():
                     count += 1
                 else:
                     before = current
-                    count = 1  
-            if count >= m:
-                answer += 1
-                  
+                    count = 1
+
+                if count >= m:
+                    answer += 1
 
     # 열
     for i in range(n): # 행 -> 고정
@@ -40,9 +40,10 @@ def solution():
                     count += 1
                 else:
                     before = current
-                    count = 1
-            if count >= m :
-                answer += 1
+                    count = 1  
+                          
+                if count >= m :
+                    answer += 1
             
     print(answer)
 
