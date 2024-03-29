@@ -21,29 +21,31 @@ def solution():
                 if current == before:
                     count += 1
                 else:
+                    if count >= m:
+                        answer += 1
                     before = current
-                    count = 1
-
-                if count >= m:
-                    answer += 1
+                    count = 1  
+            if count >= m:
+                answer += 1
 
     # 열
     for i in range(n): # 행 -> 고정
         for j in range(n): # 열 -> 변화
             if i + n - 1 >= n:
                 continue
-            count = 0    
+            count = 0  
             before = 0  
             for row in range(n):
                 current = arr[row][j]
                 if current == before:
                     count += 1
                 else:
+                    if count >= m:
+                        answer += 1
                     before = current
-                    count = 1  
-                          
-                if count >= m :
-                    answer += 1
+                    count = 1
+            if count >= m :
+                answer += 1
             
     print(answer)
 
