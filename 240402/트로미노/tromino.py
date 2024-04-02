@@ -21,7 +21,7 @@ def rotate(tetromino): # 90도 회전
 
 def flip(tetromino):
   # 어느 방향으로 대칭시킬 건지 일관된 기준만 세우면 되는듯? 이것은 x축 대칭.
-  return [(-x, y) for x, y in tetromino]
+  return [(x, -y) for x, y in tetromino]
 
 def get_max_score(x,y,tromino,n,m,matrix):
     score = 0
