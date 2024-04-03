@@ -33,3 +33,4 @@ def solution():
                     max_gold = max(max_gold, num_of_gold)
     print(max_gold)
 solution()
+# 내가 처음에 생각 한 것이 아예 틀리지는 않았음. 다만 각각의 가장 자리를 더할 생각 + 그 것을 더하기 위해 발견해야할 규칙을 발견하지 못함.
