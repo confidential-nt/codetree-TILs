@@ -25,7 +25,7 @@ def solution():
 
     max_gold = 0
     for i in range(n):
-        for j in range(m):
+        for j in range(n):
             for k in range(2 * (n - 1) + 1):
                 num_of_gold = get_num_of_gold(i,j,k)
 
