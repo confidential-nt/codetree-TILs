@@ -19,8 +19,6 @@ def solution():
             for step in range(k):
                 if in_range(curr_x, curr_y):
                     sum_result += grid[curr_x][curr_y]
-                else:
-                    break  
                 curr_x += dx
                 curr_y += dy            
         return sum_result
