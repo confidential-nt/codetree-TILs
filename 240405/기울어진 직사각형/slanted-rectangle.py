@@ -14,13 +14,14 @@ def solution():
 
         curr_x,curr_y = i,j
         
-        
         for dx,dy in zip(dxs, dys):
             for step in range(k):
                 if in_range(curr_x, curr_y):
                     sum_result += grid[curr_x][curr_y]
+                else:
+                    return 0
                 curr_x += dx
-                curr_y += dy            
+                curr_y += dy           
         return sum_result
 
 
