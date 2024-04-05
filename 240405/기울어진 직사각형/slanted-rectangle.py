@@ -18,6 +18,7 @@ def solution():
 
         for dx,dy,move_num in zip(dxs, dys, move_nums): # 이것도 주목. 이렇게 하면 가로, 세로 길이 똑같이 유지해서 직사각형 만들 수 있음.
             for _ in range(move_num):
+                # 시작점을 더하지 않아도 되는 이유: 마지막 4번째 탐색 때 더할 것이기 때문.
                 current_x += dx
                 current_y += dy
 
@@ -45,7 +46,7 @@ def solution():
         for j in range(n):
             # 몇 번 움직일것이냐...
             for k in range(1, int(sqrt(n ** 2 + n ** 2)) + 1):
-                for l in range(1, int(sqrt(n ** 2 + n ** 2)) + 1):
+                for l in range(1, int(sqrt(n ** 2 + n ** 2)) + 1): # 여기도 주목.
                     sum_result = get_square_sum(i,j,k,l)
                     max_sum = max(max_sum, sum_result)
     print(max_sum)
