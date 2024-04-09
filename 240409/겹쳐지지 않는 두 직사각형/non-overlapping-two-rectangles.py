@@ -45,6 +45,7 @@ def is_possible(x1,y1,x2,y2,x3,y3,x4,y4):
     clear_board()
     draw(x1,y1,x2,y2)
     draw(x3,y3,x4,y4)
+    # 두 직사각형을 격자에 새로 그렸을 때, (1로 나타냄) 어떤 지점이 2이상이라면 그것은 겹친다는 의미.
     return not check_board()
 
 
