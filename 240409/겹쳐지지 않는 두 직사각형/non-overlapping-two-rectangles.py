@@ -1,38 +1,68 @@
 import sys
 
+MIN_VALUE = -sys.maxsize
+
+n,m = map(int, input().split())
+board = [
+    [0] * m for _ in range(n)
+]
+
+arr = [list(map(int, input().split())) for _ in range(n)]
+
 def solution():
-    n,m = map(int, input().split())
-    arr = [list(map(int, input().split())) for _ in range(n)]
-    max_score = -sys.maxsize
-    for i in range(n):
+    # 이전 제출한 코드의 문제:
+    # 1. 직사각형은 두 꼭짓점으로 이루어진 것이라는 것을 간과.
+    
+    max_score = MIN_VALUE    
+    
+    for i in range(n): # top-left
         for j in range(m):
-            # 시작점 1 (i,j)
-            for h_a in range(1,n):
-                for w_a in range(1,m):
-                    # 시작점 2 (l,k)
-                    for l in range(n):
-                        for k in range(m):
-                            for h_b in range(1,n):
-                                for w_b in range(1,m):
-                                    # 1. 각 영역이 겹치지 않는지 확인 -> 경계가 있고 그 경계를 넘는가? -> 시작점으로 파악
-                                    # -> 이 부분이 핵심인듯.
-                                    if (abs(l - i) < h_a and abs(k - j) < w_a):
-                                        continue
-                                    # 2. index out of range 체크
-                                    if i + h_a > n or j + w_a > m or l + h_b > n or k + w_b > m:
-                                        continue
-                                    # 3. 겹치지 않는다면 각 영역에서의 점수 획득
-                                    a_score = 0
-                                    for one in range(i, i + h_a):
-                                        for two in range(j, j + w_a):
-                                            a_score += arr[one][two]
-                                    b_score = 0
-                                    for one in range(l, l + h_b):
-                                        for two in range(k, k + w_b):
-                                            b_score += arr[one][two]
-                                    # 4. 점수 합 구하기.
-                                    max_score = max(max_score , a_score + b_score)
+            for k in range(i, n): # right-bottom
+                for l in range(j, m):
+                    max_score = max(max_score, find_max_score(i,j,k,l))
     print(max_score)
 
+def find_max_score(x1,y1,x2,y2):
+    max_score = MIN_VALUE
+
+    for i in range(n):
+        for j in range(m):
+            for k in range(i, n):
+                for l in range(j, m):
+                    if is_possible(x1,y1,x2,y2,i,j,k,l):
+                        max_score = max(max_score, rect_sum(x1,y1,x2,y2) + rect_sum(i,j,k,l))
+    return max_score
+
+def rect_sum(x1,y1,x2,y2):
+    return sum([
+        arr[i][j]
+        for i in range(x1, x2 + 1)
+        for j in range(y1, y2 + 1)
+    ])
+
+
+def is_possible(x1,y1,x2,y2,x3,y3,x4,y4):
+    clear_board()
+    draw(x1,y1,x2,y2)
+    draw(x3,y3,x4,y4)
+    return not check_board()
+
+
+def draw(x1,y1,x2,y2):
+    for i in range(x1, x2 + 1):
+        for j in range(y1, y2 + 1):
+            board[i][j] += 1
+
+def check_board():
+    for i in range(n):
+        for j in range(m):
+            if board[i][j] >= 2:
+                return True
+    return False
+
+def clear_board():
+    for i in range(n):
+        for j in range(m):
+            board[i][j] = 0
 
 solution()
