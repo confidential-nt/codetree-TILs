@@ -16,8 +16,9 @@ def is_triangle(c1,c2,c3):
     x1,y1 = c1
     x2,y2 = c2
     x3,y3 = c3
-
-    if (x1 == x2 and y2 == y3) or (x1 == x3 and y3 == y2) or (x2 == x3 and y3 == y1) or (x2 == x1 and y1 == y3) or (x3 == x1 and y1 == y2) or (x3 == x2 and y2 == y1):
+    
+    # 세 점 중에서 적어도 x값이 같은 쌍이 하나 있으며 y값이 같은 쌍이 적어도 하나 있으면 됨.
+    if (x1 == x2 or x1 == x3 or x2 == x3) and (y1 == y2 or y1 == y3 or y2 == y3):
         return True
 
     return False    
