@@ -11,7 +11,7 @@ def solution():
             x3,x4 = lines[j] # 비교대상
             if x3< x1 <x4 and x3 < x2 < x4:
                 count += 2
-    print(count)    
+    print(n - count)    
 
 
 solution()
