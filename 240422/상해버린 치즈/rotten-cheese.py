@@ -1,10 +1,7 @@
 def solution():
     N,M,D,S = map(int, input().split())
     eat_logs = [list(map(int, input().split())) for _ in range(D)]
-    sick_logs = [0] * (N + 1)
-    for _ in range(S):
-        p,t = map(int, input().split())
-        sick_logs[p] = t
+    sick_logs = [list(map(int, input().split())) for _ in range(S)]
 
     max_count = 0
 
@@ -15,19 +12,31 @@ def solution():
     # 질문: 정렬이 필요한가? 시간 순에 따른 정렬? 치즈 순서에 따른 정렬?
     # 고려사항: 시간도 중요. 아파지기 전에 먹어야 상한 치즈임.
     # 고려사항: 아픈 사람 기록에는 모든 아픈 사람이 포함되지 않기 때문에 상한 치즈로 인해 아플 수도 있는 사람까지 포함시켜야.
-    for cheeze in range(1, M+1):
-        count = 0
+    for cheeze in range(1, M+1): # 이게 상한치즈라면
+        
+        re = [0] * (N + 1)
         for p,m,t in eat_logs:
-            if cheeze != m :
+            if m != cheeze:
                 continue
-            if sick_logs[p] and sick_logs[p] > t:
-                count += 1    
-            else:
-                count += 1
+            re[p] = t
+        
+        is_possible = True
+        for p,t in sick_logs:
+            if re[p] >= t or not re[p]:
+                is_possible = False
+                break
+
+        count = 0
+        if is_possible:
+            for r in re:
+                if r:
+                    count += 1
+            
         max_count = max(count, max_count)        
 
 
 
     print(max_count)
+
 
 solution()
