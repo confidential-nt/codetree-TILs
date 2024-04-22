@@ -18,7 +18,10 @@ def solution():
         for p,m,t in eat_logs:
             if m != cheeze:
                 continue
-            re[p] = t
+            if not re[p]:
+                re[p] = t
+            elif re[p] > t: # 이 부분 주의. 같은 치즈를 여러번 먹는 입력도 나오나봄..?
+                re[p] = t    
         
         is_possible = True
         for p,t in sick_logs:
