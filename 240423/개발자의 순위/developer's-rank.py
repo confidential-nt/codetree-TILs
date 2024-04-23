@@ -3,16 +3,24 @@ from itertools import combinations
 def solution():
     K,N = map(int, input().split())
     scores = [list(map(int, input().split())) for _ in range(K)]
-    temp = []
-    count = len(list(combinations(scores[0], 2)))
-    for score in scores:
-        combs = list(combinations(score, 2))
-        if len(temp) == 0:
-            temp = combs
-            continue
-        for comb in combs:
-            if comb not in temp:
-                count -= 1
+    count = 0
+    for i in range(1, N + 1):
+        for j in range(1, N + 1):
+            if i == j:
+                continue
+            comb = (i,j)
+
+            is_immutable = True
+            for score in scores:
+                score_comb = list(combinations(score, 2))
+                
+                if comb not in score_comb:
+                    is_immutable = False
+                    break
+            
+            if is_immutable:
+                count += 1
+
     print(count)
 
 
