@@ -4,7 +4,7 @@ def solution():
     max_bomb_number = -1
 
     for i in range(N):
-        bomb_number = 0
+        bomb_number = -1
         for j in range(i+1, N):
             if seq[i] == seq[j] and j - i <= K:
                 bomb_number = seq[i]
