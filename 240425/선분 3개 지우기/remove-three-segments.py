@@ -16,7 +16,7 @@ def solution():
                         count[c] += 1           
                 is_possible = True
                 for index in range(0,101):
-                    if count[index] > 1:
+                    if count[index] > 1: # 경계든 그냥 겹치는 부분이든 해당 지점이 1이상 카운트되면 무조건 겹치거나 경계인 부분.
                         is_possible = False
                         break
 
