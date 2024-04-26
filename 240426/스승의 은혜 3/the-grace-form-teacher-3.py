@@ -6,7 +6,7 @@ def solution():
         tmp = [el for el in arr]
         tmp[i] = (tmp[i][0]/2, tmp[i][1])
         
-        tmp.sort(key=lambda x:x[0])
+        tmp.sort(key=lambda x:x[0]+x[1])
 
         count = 0
         total = 0
