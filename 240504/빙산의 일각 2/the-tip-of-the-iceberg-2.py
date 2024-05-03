@@ -13,16 +13,15 @@ def solution():
         while i < n :
             if temp[i] <= 0:
                 i += 1
+                j += 1
                 continue
             while j < n :
                 if temp[j] <= 0:
-                    count += 1
-                    
-                    j = i + 1 
                     break 
                 j += 1       
-              
+            count += 1
             i = j + 1
+            j = i + 1      
         max_count = max(count, max_count)
     
     print(max_count)
