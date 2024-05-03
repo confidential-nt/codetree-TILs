@@ -5,24 +5,14 @@ def solution():
     max_count = 0
 
     for h in range(1, 1001):
-        temp = [el - h for el in arr]
-        
         count = 0
-        i = 0
-        j = 1
-        while i < n :
-            if temp[i] <= 0:
-                i += 1
-                j += 1
-                continue
-            while j < n :
-                if temp[j] <= 0:
-                    break 
-                j += 1       
+
+        if arr[0] > h :
             count += 1
-            i = j + 1
-            j = i + 1      
-        max_count = max(count, max_count)
-    
+
+        for i in range(1, n):
+            if arr[i - 1] <= h and arr[i] > h:
+                count += 1
+        max_count = max(count, max_count)        
     print(max_count)
 solution()
