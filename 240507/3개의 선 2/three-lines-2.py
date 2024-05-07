@@ -1,6 +1,7 @@
 from itertools import combinations
 
 def solution():
+    # 가장 노가다인게 가장 정확한 방법.
     n = int(input())
     arr = [tuple(map(int, input().split())) for _ in range(n)]
     answer = 0
