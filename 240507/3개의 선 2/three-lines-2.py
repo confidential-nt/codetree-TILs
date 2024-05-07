@@ -11,26 +11,23 @@ def solution():
         j = 3 - i # 세로(x) 3 ~ 0 개
 
         possible = list(range(11))
-        y = list(combinations(possible, i))
-        x = list(combinations(possible, j))
+        x = list(combinations(possible, j)) # 0~10 중 j개 선택한 x축 x[i]는 j개 선택한 경우의 수 중 하나. ex: j = 3인 경우 x[i]는 (1,2,3)
+        y = list(combinations(possible, i)) # 0~10 중 i개 선택한 y축
 
-        
-        for index, (ax,ay) in enumerate(arr):
-            temp = [0]* n
-            for cx in x:
-                for cy in y:
-                    if ax in cx:
-                        temp[index] = 1
+        is_possible = [0] * n
+        for cx in x:                    
+            for index, (ax,ay) in enumerate(arr):
+                if ax in cx:
+                    is_possible[index] = 1
+
+            for cy in y:
+                for index, (ax,ay) in enumerate(arr):
                     if ay in cy:
-                        temp[index] = 1   
-
-            if len([el for el in temp if el == 1]) == n:
-                answer = 1
-                break
-
-        if answer == 1:
-            break
-
+                        is_possible[index] = 1
+                if len([el for el in is_possible if el == 1]) == n :
+                    answer = 1
+                else:
+                    is_possible = [0] * n
     print(answer)
 
 
