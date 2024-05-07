@@ -14,8 +14,9 @@ def solution():
         y = list(combinations(possible, i))
         x = list(combinations(possible, j))
 
-        temp = [0]* n
+        
         for index, (ax,ay) in enumerate(arr):
+            temp = [0]* n
             for cx in x:
                 for cy in y:
                     if ax in cx:
@@ -23,10 +24,12 @@ def solution():
                     if ay in cy:
                         temp[index] = 1   
 
-        if len([el for el in temp if el == 1]) == n:
-            answer = 1
-            break
+            if len([el for el in temp if el == 1]) == n:
+                answer = 1
+                break
 
+        if answer == 1:
+            break
 
     print(answer)
 
