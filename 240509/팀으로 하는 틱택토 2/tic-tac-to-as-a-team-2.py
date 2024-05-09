@@ -8,7 +8,9 @@ def solution():
         b = tic_tac_toe[i][1]
         c = tic_tac_toe[i][2]
 
-        if is_already[a][b][c]:
+        temp = sorted([a,b,c])
+        ta,tb,tc = temp
+        if is_already[ta][tb][tc]:
             continue
 
         if a == b and a != c:
@@ -31,8 +33,9 @@ def solution():
                     a = tic_tac_toe[0][i]
                     b = tic_tac_toe[1][j]
                     c = tic_tac_toe[2][k]
-
-                    if is_already[a][b][c]:
+                    temp = sorted([a,b,c])
+                    ta,tb,tc = temp
+                    if is_already[ta][tb][tc]:
                         continue
 
                     # a,b 같/ a,c같 / b,c같/
@@ -47,6 +50,7 @@ def solution():
                         count += 1
                     sorted_abc = sorted([a,b,c])
                     sa,sb,sc = sorted_abc
+                    
                     is_already[sa][sb][sc] = 1
 
     # 대각선 오른쪽
@@ -56,8 +60,9 @@ def solution():
                 a = tic_tac_toe[0][i]
                 b = tic_tac_toe[1][j]
                 c = tic_tac_toe[2][k]
-
-                if is_already[a][b][c]:
+                temp = sorted([a,b,c])
+                ta,tb,tc = temp
+                if is_already[ta][tb][tc]:
                     continue
 
                 # a,b 같/ a,c같 / b,c같/
@@ -70,9 +75,9 @@ def solution():
                 elif b == c and b != a:
                     # print(a,b,c)
                     count += 1    
-                    sorted_abc = sorted([a,b,c])
-                    sa,sb,sc = sorted_abc
-                    is_already[sa][sb][sc] = 1
+                sorted_abc = sorted([a,b,c])
+                sa,sb,sc = sorted_abc
+                is_already[sa][sb][sc] = 1
 
     # 대각선 왼쪽
     for i in range(2, -1, -1):
@@ -81,8 +86,9 @@ def solution():
                 a = tic_tac_toe[0][i]
                 b = tic_tac_toe[1][j]
                 c = tic_tac_toe[2][k]
-
-                if is_already[a][b][c]:
+                temp = sorted([a,b,c])
+                ta,tb,tc = temp
+                if is_already[ta][tb][tc]:
                     continue
                 # print(a,b,c)
                 # a,b 같/ a,c같 / b,c같/
@@ -96,7 +102,6 @@ def solution():
                     # print(a,b,c)
                     count += 1   
                 sorted_abc = sorted([a,b,c])
-                
                 sa,sb,sc = sorted_abc
                 is_already[sa][sb][sc] = 1
 
