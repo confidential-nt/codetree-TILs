@@ -5,11 +5,11 @@ def solution():
         a = tic_tac_toe[i][0]
         b = tic_tac_toe[i][1]
         c = tic_tac_toe[i][2]
-        if a == b:
+        if a == b and a != c:
             count += 1
-        elif a == c:
+        elif a == c and a != b:
             count += 1
-        elif b == c:
+        elif b == c and b != a:
             count += 1    
 
     for i in range(3):
@@ -23,11 +23,11 @@ def solution():
                     c = tic_tac_toe[2][k]
 
                     # a,b 같/ a,c같 / b,c같/
-                    if a == b:
+                    if a == b and a != c:
                         count += 1
-                    elif a == c:
+                    elif a == c and a != b:
                         count += 1
-                    elif b == c:
+                    elif b == c and b != a:
                         count += 1    
     print(count)
     
