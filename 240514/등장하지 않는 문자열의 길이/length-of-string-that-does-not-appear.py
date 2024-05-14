@@ -1,22 +1,32 @@
-def solution():
-    n = int(input())
-    s = input()
-    min_length = float("inf")
-    check = [0] * (n + 1)
-    for i in range(1, n+1):
-        for j in range(n):
-            sub_s = s[j:j+i]
-            count = 0
-            for k in range(n):
-                if s[k:k+i] == sub_s:
-                    count += 1
-            if count >= 2:
-                check[i] = 1
-                break
+n = int(input())
+string = input()
 
-        if not check[i]:
-            min_length = min(i, min_length)    
-        
-    print(min_length)    
+ans = 1
 
-solution()
+# 1씩 늘려가면서 어느 길이까지 2번 등장하지는지 모두 시도해봅니다.
+for i in range(1, n):
+    # 모든 길이가 i인 부분 문자열에 대해 쌍을 짓고
+    # 둘이 완전히 똑같은지 확인합니다.
+
+    # twice : i 길이의 2회 이상 등장하는 부분 문자열이 존재하면 true
+    twice = False
+
+    for j in range(n - i + 1):
+        for k in range(j + 1, n - i + 1):
+            # issame : j부터 i길이의 부분 문자열과
+            # k부터 i길이의 부분 문자열이 완전히 같으면 true
+            issame = True
+
+            for l in range(i):
+                if string[j + l] != string[k + l]:
+                    issame = False
+
+            if issame:
+                twice = True
+
+    if twice:
+        ans = i + 1
+    else:
+        break
+
+print(ans)
