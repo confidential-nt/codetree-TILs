@@ -7,7 +7,7 @@ def solution():
         val = 0
         count = m
         index = i
-        while count > 0:
+        while count > 0: # for loop로 진행해도 ㄱㅊ.
             temp = arr[index]
             val += arr[index]
             index = temp - 1    
