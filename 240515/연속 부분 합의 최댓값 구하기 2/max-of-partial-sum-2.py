@@ -16,7 +16,7 @@ def solution():
         max_sum_res = max(max_sum_res, sum_res)
         flag = False
         
-    print(sum_res)       
+    print(max_sum_res)       
 
 
 solution()
