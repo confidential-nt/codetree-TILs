@@ -3,12 +3,12 @@ def solution():
     arr = [tuple(map(int, input().split())) for _ in range(n)]
     
     arr.sort(key=lambda x: x[1])
-    result = [arr[0]]
-    for i in range(1, n):
-        a,b = result[-1]
-        c,d = arr[i]
-        if b <= c:
-            result.append(arr[i])
-    print(len(result))        
+    last = -1
+    count = 0
+    for (s,e) in arr:
+        if last <= s:
+            count += 1
+            last = e
+    print(count)        
 
 solution()
