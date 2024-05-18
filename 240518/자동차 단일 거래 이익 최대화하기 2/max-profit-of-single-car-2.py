@@ -9,15 +9,17 @@ def solution():
         if arr[min_index] > arr[i]:
             min_index = i
     
-    for i in range(min_index, n):
-        for j in range(i + 1, n):
-            val = arr[j] - arr[i]
-            max_val = max(val, max_val)
+    max_index = min_index
+    for i in range(min_index + 1, n):
+        if arr[max_index] < arr[i]:
+            max_index = i
     
-    if max_val <= 0:
+    val = arr[max_index] - arr[min_index]
+
+    if val <= 0:
         print(0)
     else:
-        print(max_val)
+        print(val)
             
 
    
