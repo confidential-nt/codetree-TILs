@@ -2,8 +2,9 @@ def solution():
     n = int(input())
     a = []
     b = [int(input()) for _ in range(n)]
+    b_set = set(b)
     for i in range(1, 2 * n + 1):
-        if i not in b:
+        if i not in b_set:
             a.append(i)
 
     a.sort()
