@@ -7,16 +7,12 @@ def solution():
         if i not in b:
             a.append(i)
     
-    max_a = max(a)
     count = 0
     for i in range(n):
-        if b[i] < max_a :
+        if a[i] > b[i]:
             count += 1
+
     print(count)
-
-
-
-
 
 
 solution()
