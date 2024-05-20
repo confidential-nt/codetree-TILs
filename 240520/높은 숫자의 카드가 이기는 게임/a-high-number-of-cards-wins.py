@@ -2,16 +2,19 @@ def solution():
     n = int(input())
     a = []
     b = [int(input()) for _ in range(n)]
-
     for i in range(1, 2 * n + 1):
         if i not in b:
             a.append(i)
+
+    a.sort()
+    b.sort()
     
     count = 0
-    for i in range(n):
-        if a[i] > b[i]:
+    b_index = 0
+    for a_index in range(n):
+        if b_index < n and a[a_index] > b[b_index]:
             count += 1
-
+            b_index += 1
     print(count)
 
 
