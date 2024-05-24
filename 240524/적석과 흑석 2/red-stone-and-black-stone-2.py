@@ -17,6 +17,8 @@ def solution():
 
     
     red_s = SortedSet(red_stones) # 이진 검색의 이점 위해 사용하는 것.
+    # Aj보다 같거나 큰 최소 Ti값을 빠르게 찾기 위해
+    # treeset을 이용합니다.
 
     black_stones.sort() # 검은돌의 B의 값이 작은 돌부터 보며... -> b 기준으로 정렬
 
