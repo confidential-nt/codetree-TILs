@@ -11,6 +11,6 @@ def solution():
     # 2. y -> x
     case2 = abs((y - a)) + abs((x - b))
 
-    print(min(case1, case2))
+    print(min(abs(a - b), case1, case2))
 
 solution()
