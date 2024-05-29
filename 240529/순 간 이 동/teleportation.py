@@ -1,16 +1,19 @@
-def solution():
-    a,b,x,y = map(int, input().split())
+import sys
 
-    # 3 10 8 2
-    # x -> y or y -> x
+INT_MAX = sys.maxsize
 
-    # 1. x -> y
-    case1 = abs((x - a)) + abs((y - b))
+# 변수 선언 및 입력:
+a, b, x, y = tuple(map(int, input().split()))
 
+min_dist = INT_MAX
 
-    # 2. y -> x
-    case2 = abs((y - a)) + abs((x - b))
+# Case 1. a -> b 바로 이동
+min_dist = min(min_dist, abs(b - a))
 
-    print(min(abs(a - b), case1, case2))
+# Case 2. a -> x -> y -> b 순서로 이동
+min_dist = min(min_dist, abs(x - a) + 0 + abs(b - y))
 
-solution()
+# Case 3. a -> y -> x -> b 순서로 이동
+min_dist = min(min_dist, abs(y - a) + 0 + abs(b - x))
+
+print(min_dist)
