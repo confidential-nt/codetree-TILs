@@ -47,7 +47,7 @@ def solution():
                 continue      
             distance = j - i
             result_distane = min(distance, result_distane)
-    print(result_distane)
+    print(result_distane if result_distane > 1 else 2)
 
 
 
