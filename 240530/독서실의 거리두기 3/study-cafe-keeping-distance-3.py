@@ -20,9 +20,9 @@ def solution():
     n = int(input())
     arr = [int(el) for el in input()]
 
-    # 1. 가장 가까운 쌍 찾기
-    min_distance = float("inf")
-    min_distance_pair = (0,0)
+    # 1. 가장 먼 쌍 찾기
+    max_distance = -1
+    max_distance_pair = (0,0)
     for i in range(n):
         if arr[i] == 0:
             continue
@@ -30,14 +30,16 @@ def solution():
             if arr[j] == 0:
                 continue      
             distance = j - i
-            min_distance = min(distance, min_distance)
-            min_distance_pair = (i,j)
+            if distance > max_distance:
+                max_distance = distance
+                max_distance_pair = (i,j)
+            break
     
     # 2. 해당 쌍 가운데에 1 놓기
-    pos = (min_distance_pair[0] + min_distance_pair[1]) // 2
+    pos = (max_distance_pair[0] + max_distance_pair[1]) // 2
     arr[pos] = 1
-
-    # 3. 최댓값 구하기
+    
+    # 3. 최솟값 구하기
     result_distane = float("inf")
     for i in range(n):
         if arr[i] == 0:
@@ -47,7 +49,8 @@ def solution():
                 continue      
             distance = j - i
             result_distane = min(distance, result_distane)
-    print(result_distane if result_distane > 1 else 2)
+            break
+    print(result_distane)
 
 
 
