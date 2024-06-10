@@ -12,6 +12,12 @@ def solution():
         print(2)
 
     else:
-        print(arr[1] - arr[0] - 1)
+        a = arr[2] - arr[1]
+        b = arr[1] - arr[0]
+        if a > b:
+            print(a - b)
+        else:
+            print(b - a)    
+        
 
 solution()
