@@ -40,7 +40,7 @@ def solution():
             distance = j - i
             result_distane = min(distance, result_distane)
             break
-
+    
     arr[pos] = 0
     
     if arr[0] == 0:
@@ -58,7 +58,8 @@ def solution():
         if other_distance > result_distane:
             result_distane = other_distance        
         arr[0] = 0
-    elif arr[n - 1] == 0:
+        
+    if arr[n - 1] == 0:
         other_distance = float("inf")
         arr[n - 1] = 1
         for i in range(n):
@@ -72,6 +73,7 @@ def solution():
                 break
         if other_distance > result_distane:
             result_distane = other_distance
+        
     print(result_distane)
 
 
