@@ -40,7 +40,7 @@ def solution():
 solution()
 
 
-def solution2:
+def solution2():
     # 이 방법이 안 헷갈리고 더 나을지도..?
     # 변수 선언 및 입력:
     n = int(input())
