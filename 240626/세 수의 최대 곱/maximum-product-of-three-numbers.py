@@ -6,24 +6,26 @@ def solution():
 
     # 양의 정수 3개
     case_1 = -sys.maxsize
+    result = 1
     arr_copy = sorted(arr)
     count = 0
-    result = 1
+    
     for i in range(n-1, -1, -1):
         if count >= 3:
             break
         if arr_copy[i] > 0:
             result *= arr_copy[i]
             count += 1
-    case_1 = result
+    case_1 = result if count >= 3 else -sys.maxsize
 
 
     # 양 2, 음 1
     case_2 = -sys.maxsize
+    result = 1
     arr_copy = sorted(arr, key=lambda x: abs(x))
     count_plus = 0
     count_minus = 0
-    result = 1
+    
     for i in range(n):
         if arr_copy[i] == 0:
             continue
@@ -33,7 +35,7 @@ def solution():
         elif count_minus < 1 and arr_copy[i] < 0:
             result *= arr_copy[i]
             count_minus += 1
-    case_2 = result
+    case_2 = result if count_minus + count_plus >= 3 else -sys.maxsize
 
     # 양1, 음2
     case_3 = -sys.maxsize
@@ -50,7 +52,7 @@ def solution():
         elif count_minus < 2 and arr_copy[i] < 0:
             result *= arr_copy[i]
             count_minus += 1
-    case_3 = result
+    case_3 = result if count_minus + count_plus >= 3 else -sys.maxsize
 
     # 음 3
     case_4 = -sys.maxsize
@@ -63,7 +65,7 @@ def solution():
         if arr_copy[i] < 0:
             result *= arr_copy[i]
             count += 1
-    case_4 = result
+    case_4 = result if count >= 3 else -sys.maxsize
 
     # 영 포함
     case_5 = -sys.maxsize
@@ -71,5 +73,6 @@ def solution():
         if arr[i] == 0:
             case_5 = 0
 
+    
     print(max(case_1, case_2, case_3, case_4, case_5))
 solution()
