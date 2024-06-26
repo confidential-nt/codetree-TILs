@@ -34,9 +34,10 @@ def solution():
     # 곱 중 음수만 존재할 때
     # 배열에 -밖에 없거나 / (negative = 1, zero = 0, positive = 2)인 경우
     # 이 경우 가장 절댓값이 작은 값 3개(=가장 큰 값 3개)를 고르는 것이 최선입니다.
+    # ex) [-5, -4, -3, -2, -1] / [-5,1,2]
     else:
         answer = arr[n - 1] * arr[n - 2] * arr[n - 3]
     
     print(answer)
-
+# 잘 생각하면 굳이 절댓값을 기준으로 정렬하지 않고도 문제를 풀 수 있음.
 solution()
