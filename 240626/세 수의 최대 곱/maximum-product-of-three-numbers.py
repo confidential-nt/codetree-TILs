@@ -1,63 +1,66 @@
 import sys
 
-
 def solution():
     n = int(input())
     arr = list(map(int, input().split()))
 
     # 양의 정수 3개
-    case_one = -sys.maxsize
-    for i in range(n):
-        if arr[i] <= 0:
-            continue
-        for j in range(i+1, n):
-            if arr[j] <= 0:
-                continue
-            for k in range(j+1, n):
-                if arr[k] <= 0:
-                    continue
-                case_one = max(arr[i] * arr[j] * arr[k], case_one)
+    case_1 = 1
+    arr_copy = sorted(arr)
+    count = 0
+    for i in range(n-1, -1, -1):
+        if count >= 3:
+            break
+        if arr_copy[i] > 0:
+            case_1 *= arr_copy[i]
+            count += 1
 
     # 양 2, 음 1
-    case_two = -sys.maxsize
+    case_2 = 1
+    arr_copy = sorted(arr, key=lambda x: abs(x))
+    count_plus = 0
+    count_minus = 0
+
     for i in range(n):
-        if arr[i] <= 0:
+        if arr_copy[i] == 0:
             continue
-        for j in range(i+1, n):
-            if arr[j] <= 0:
-                continue
-            for k in range(n):
-                if arr[k] < 0:
-                    case_two = max(arr[i] * arr[j] * arr[k], case_two)
+        if count_plus < 2 and arr_copy[i] > 0:
+            case_2 *= arr_copy[i]
+            count_plus += 1
+        elif count_minus < 1 and arr_copy[i] < 0:
+            case_2 *= arr_copy[i]
+            count_minus += 1
+
     # 양1, 음2
-    case_three = -sys.maxsize
-    for i in range(n):
-        if arr[i] <= 0:
+    case_3 = 1
+    arr_copy = sorted(arr, key=lambda x: abs(x))
+    count_plus = 0
+    count_minus = 0
+    for i in range(n-1, -1, -1):
+        if arr_copy[i] == 0:
             continue
-        for j in range(n):
-            if arr[j] > 0:
-                continue
-            for k in range(j+1, n):
-                if arr[k] > 0:
-                    continue
-                case_three = max(arr[i] * arr[j] * arr[k], case_three)
+        if count_plus < 1 and arr_copy[i] > 0:
+            case_3 *= arr_copy[i]
+            count_plus += 1
+        elif count_minus < 2 and arr_copy[i] < 0:
+            case_3 *= arr_copy[i]
+            count_minus += 1
+
     # 음 3
-    case_four = -sys.maxsize
+    case_4 = 1
+    arr_copy = sorted(arr, key=lambda x: abs(x))
+    count = 0
     for i in range(n):
-        if arr[i] > 0:
-            continue
-        for j in range(i+1, n):
-            if arr[j] > 0:
-                continue
-            for k in range(j+1, n):
-                if arr[k] > 0:
-                    continue
-                case_four = max(arr[i] * arr[j] * arr[k], case_four)
+        if count >= 3:
+            break
+        if arr_copy[i] < 0:
+            case_4 *= arr_copy[i]
+            count += 1
     # 영 포함
-    case_five = -sys.maxsize
+    case_5 = -sys.maxsize
     for i in range(n):
         if arr[i] == 0:
-            case_five = 0
-
-    print(max([case_one, case_two, case_three, case_four, case_five]))
+            case_5 = 0
+            
+    print(max(case_1, case_2, case_3, case_4, case_5))
 solution()
