@@ -4,75 +4,39 @@ def solution():
     n = int(input())
     arr = list(map(int, input().split()))
 
-    # 양의 정수 3개
-    case_1 = -sys.maxsize
-    result = 1
-    arr_copy = sorted(arr)
-    count = 0
-    
-    for i in range(n-1, -1, -1):
-        if count >= 3:
-            break
-        if arr_copy[i] > 0:
-            result *= arr_copy[i]
-            count += 1
-    case_1 = result if count >= 3 else -sys.maxsize
+    answer = 0
+    negative, zero, positive = 0,0,0
 
-
-    # 양 2, 음 1
-    case_2 = -sys.maxsize
-    result = 1
-    arr_copy = sorted(arr, key=lambda x: abs(x))
-    count_plus = 0
-    count_minus = 0
-    
+    arr.sort()
+    # 이렇게 미리 양수, 음수, 0의 수를 세는 것이 간단하게 문제를 푸는 키
     for i in range(n):
-        if arr_copy[i] == 0:
-            continue
-        if count_plus < 2 and arr_copy[i] > 0:
-            result *= arr_copy[i]
-            count_plus += 1
-        elif count_minus < 1 and arr_copy[i] < 0:
-            result *= arr_copy[i]
-            count_minus += 1
-    case_2 = result if count_minus + count_plus >= 3 else -sys.maxsize
-
-    # 양1, 음2
-    case_3 = -sys.maxsize
-    result = 1
-    arr_copy = sorted(arr, key=lambda x: abs(x))
-    count_plus = 0
-    count_minus = 0
-    for i in range(n-1, -1, -1):
-        if arr_copy[i] == 0:
-            continue
-        if count_plus < 1 and arr_copy[i] > 0:
-            result *= arr_copy[i]
-            count_plus += 1
-        elif count_minus < 2 and arr_copy[i] < 0:
-            result *= arr_copy[i]
-            count_minus += 1
-    case_3 = result if count_minus + count_plus >= 3 else -sys.maxsize
-
-    # 음 3
-    case_4 = -sys.maxsize
-    result = 1
-    arr_copy = sorted(arr, key=lambda x: abs(x))
-    count = 0
-    for i in range(n):
-        if count >= 3:
-            break
-        if arr_copy[i] < 0:
-            result *= arr_copy[i]
-            count += 1
-    case_4 = result if count >= 3 else -sys.maxsize
-
-    # 영 포함
-    case_5 = -sys.maxsize
-    for i in range(n):
+        if arr[i] < 0:
+            negative += 1
         if arr[i] == 0:
-            case_5 = 0
+            zero += 1
+        if arr[i] > 0:
+            positive += 1
 
+    # 곱 중 양수가 존재한다 => 이 양수의 값이 가장 최선의 값임. 그리고 이 값은 0보다 무조건 큼.
+    # = 양수 3개의 곱 or 양수 1개와 음수 2개의 곱
+    if positive >= 3 or (positive >= 1 and negative >=2):
+        # 양수가 3개 이상이라면, 그 중 가장 큰 3개의 수를 곱하는 것이 최선
+        if positive >= 3:
+            answer = max(answer, arr[n - 1] * arr[n - 2] * arr[n - 3])
+        # 음수 2개와 양수 1개를 곱할 때에는, 음수 2개는 절댓값이 가장 큰 값을, (즉, 가장 작은 두 값)
+        # 양수 1개는 가장 큰 값을 골라 곱하는 것이 최선입니다.
+        if positive >= 1 and negative >= 2:
+            answer = max(answer, arr[n - 1] * arr[0] * arr[1])
+        # 이와 같이 2가지 경우가 동시에 존재할 수 있기 때문에 max를 사용함.   
+    # 곱 중 양수가 존재하지 않으며 곱 중 0이 존재할 때 => 그 다음으로 최선의 값임
+    elif zero >= 1:
+        answer = 0
+    # 곱 중 음수만 존재할 때
+    # 배열에 -밖에 없거나 / (negative = 1, zero = 0, positive = 2)인 경우
+    # 이 경우 가장 절댓값이 작은 값 3개(=가장 큰 값 3개)를 고르는 것이 최선입니다.
+    else:
+        answer = arr[n - 1] * arr[n - 2] * arr[n - 3]
     
-    print(max(case_1, case_2, case_3, case_4, case_5))
+    print(answer)
+
 solution()
