@@ -8,7 +8,7 @@ def solution():
     negative, zero, positive = 0,0,0
 
     arr.sort()
-    # 이렇게 미리 양수, 음수, 0의 수를 세는 것이 간단하게 문제를 푸는 키
+    # 이렇게 미리 양수, 음수, 0의 수를 세는 것이 간단하게 문제를 푸는 키 => 경우를 잘생각해보면 정리해볼 수 있음. 큰 그림처럼 미리 만들어서 정리하는 것.
     for i in range(n):
         if arr[i] < 0:
             negative += 1
