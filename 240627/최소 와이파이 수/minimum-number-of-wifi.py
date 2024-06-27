@@ -10,6 +10,10 @@ def solution():
         if arr[i] == 1:
             count += 1
 
+    if m == 0:
+        print(count)
+        return
+        
     if count == 0:
         print(0)
         return
