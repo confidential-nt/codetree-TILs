@@ -5,29 +5,23 @@ def solution():
 
     n,m = map(int, input().split())
     arr = list(map(int, input().split()))
-    count = 0
-    for i in range(n):
-        if arr[i] == 1:
-            count += 1
-
-    if m == 0:
-        print(count)
-        return
-        
-    if count == 0:
-        print(0)
-        return
-
-    cover = 2 * m + 1
-    if cover > n:
-        print(1)
-        return
-
+    last = arr
     answer = 0
-    remain = count
-    while remain > 0:
-        remain -= cover
+    while True:
+        start = -1
+        n = len(last)
+
+        for i in range(n):
+            if last[i] == 1:
+                start = i
+                break
+        
+        if start == -1:
+            print(answer)
+            break
+        
+        last = last[2*m + start + 1:]
         answer += 1
-    print(answer)
+
 
 solution()
