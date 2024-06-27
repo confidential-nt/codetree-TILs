@@ -10,6 +10,10 @@ def solution():
         if arr[i] == 1:
             count += 1
 
+    if count == 0:
+        print(0)
+        return
+
     cover = 2 * m + 1
     if cover > n:
         print(1)
