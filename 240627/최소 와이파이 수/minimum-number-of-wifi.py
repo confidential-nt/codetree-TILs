@@ -13,6 +13,6 @@ def solution():
     cover = 2 * m + 1
     answer = n // cover if m > 0 else count
     
-
+    print(answer)
 
 solution()
