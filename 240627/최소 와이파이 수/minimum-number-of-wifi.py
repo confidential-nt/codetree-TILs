@@ -24,7 +24,7 @@ def solution():
         return
 
     answer = 0
-    remain = n
+    remain = count
     while remain > 0:
         remain -= cover
         answer += 1
