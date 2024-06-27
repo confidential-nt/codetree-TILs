@@ -11,8 +11,8 @@ def solution():
             count += 1
 
     cover = 2 * m + 1
-    answer = count // cover 
+    answer = n // cover if m > 0 else count
     
-    print(answer)
+
 
 solution()
