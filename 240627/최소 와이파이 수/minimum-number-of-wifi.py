@@ -19,7 +19,11 @@ def solution():
         print(1)
         return
 
-    answer = n // cover if m > 0 else count
+    answer = 0
+    remain = n
+    while remain > 0:
+        remain -= cover
+        answer += 1
     print(answer)
 
 solution()
