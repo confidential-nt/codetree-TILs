@@ -25,6 +25,10 @@ def solution():
         odd.pop()
         odd.pop()
         count += 1
+      else:
+        if len(even) > 0 or len(odd) > 0:
+          count -= 1
+        break
       is_even_turn = False
       
     else:
@@ -35,13 +39,13 @@ def solution():
         break
       is_even_turn = True
 
-  while len(even):
-    even.pop()
-    count -= 1
-  while len(odd):
-    odd.pop()
-    count -= 1
-  print(count)
+#   while len(even):
+#     even.pop()
+#     count -= 1
+#   while len(odd):
+#     odd.pop()
+#     count -= 1
+  print(count - 1)
 solution()
 
 # 최대한 수를 덜 써야함 -> 하나로 해결 가능하면 그거로 go
