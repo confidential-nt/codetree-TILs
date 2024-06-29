@@ -19,26 +19,27 @@ def solution():
       if len(even):
         even.pop()
         count += 1  
-      elif len(odd):
-        if len(odd) < 2:
-          break
+      elif len(odd) >= 2:
         odd.pop()
         odd.pop()
         count += 1
+      else:
+        break
       is_even_turn = False
-      
     else:
       if len(odd):
         odd.pop()
         count += 1
+      else:
+        break
       is_even_turn = True
 
-  while len(even):
-    even.pop()
-    count -= 1
-  while len(odd):
-    odd.pop()
-    count -= 1
+  # while len(even):
+  #   even.pop()
+  #   count -= 1
+  # while len(odd):
+  #   odd.pop()
+  #   count -= 1
   print(count)
 solution()
 
