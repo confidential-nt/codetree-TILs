@@ -13,8 +13,8 @@ def solution():
 
   count = 0
   while True:
-    if not len(odd) and not len(even):
-      break
+    # if not len(odd) and not len(even):
+    #   break
     if is_even_turn:
       if len(even):
         even.pop()
