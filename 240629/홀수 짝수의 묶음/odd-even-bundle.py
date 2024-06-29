@@ -13,8 +13,6 @@ def solution():
 
   count = 0
   while True:
-    # if not len(odd) and not len(even):
-    #   break
     if is_even_turn:
       if len(even):
         even.pop()
@@ -24,11 +22,15 @@ def solution():
         odd.pop()
         count += 1
       else:
-        if len(even) > 0 or len(odd) > 0:
+        # 이 경우 홀수가 남아있을 경우 무조건 홀수는 2개 미만으로 남아있음
+        # 이 경우 짝수도 사실 남아있지 않음.
+        # 남은 홀수는 그룹에 포함시켜야함.
+        if len(odd) > 0:
           count -= 1
         break
       is_even_turn = False
     else:
+      # 홀수 + 짝수는 의미없음 => 숫자를 최대한 덜 사용해야하는 상황에서 홀 + 짝 = 이미 홀임. 근데 짝수 더하기 전에도 홀임. 낭비.
       if len(odd):
         odd.pop()
         count += 1
@@ -36,12 +38,6 @@ def solution():
         break
       is_even_turn = True
 
-  # while len(even):
-  #   even.pop()
-  #   count -= 1
-  # while len(odd):
-  #   odd.pop()
-  #   count -= 1
   print(count)
 solution()
 
