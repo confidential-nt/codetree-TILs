@@ -24,6 +24,8 @@ def solution():
         odd.pop()
         count += 1
       else:
+        if len(even) > 0 or len(odd) > 0:
+          count -= 1
         break
       is_even_turn = False
     else:
