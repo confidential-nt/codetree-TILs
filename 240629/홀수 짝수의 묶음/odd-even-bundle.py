@@ -31,14 +31,8 @@ def solution():
       if len(odd):
         odd.pop()
         count += 1
-      elif len(even) and len(odd):
-        if not len(even):
-          break
-        if not len(odd):
-          break
-        even.pop()
-        odd.pop()
-        count += 1
+      else:
+        break
       is_even_turn = True
 
   while len(even):
