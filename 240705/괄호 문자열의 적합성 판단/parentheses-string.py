@@ -6,11 +6,9 @@ def solution():
     n = len(string)
     for i in range(n):
         char = string[i]
-
-        top = stack[-1]
         
         if char == "(": # (인 경우엔 무조건 넣음.
-            stack.push(char)
+            stack.append(char)
         else: # ) 인데 스택이 비어있다면, 올바른 괄호 될 가망 없음.
             if not stack:
                 print("No")
