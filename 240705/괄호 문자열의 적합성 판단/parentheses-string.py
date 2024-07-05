@@ -6,11 +6,12 @@ def solution():
     n = len(string)
     for i in range(n):
         char = string[i]
-        if not stack:
+        if not len(stack):
             stack.append(char)
             continue
 
-        top = string[-1]
+        top = stack[-1]
+        
         if top == "(":
             if char == ")":
                 stack.pop()
@@ -19,6 +20,7 @@ def solution():
         else:
             stack.append(char)
 
+    
     if len(stack):
         print("No")
     else:
