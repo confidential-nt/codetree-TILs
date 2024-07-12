@@ -15,6 +15,6 @@ def solution():
         if q in d:
             print(d[q], end=" ")
         else:
-            print(0)
+            print(0, end = " ")
 
 solution()
