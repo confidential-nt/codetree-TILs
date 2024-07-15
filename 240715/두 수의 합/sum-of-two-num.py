@@ -25,7 +25,7 @@ def solution():
                 count += d[el] * d[target]
                 d[target] = d[target] - d[el]
                 d.pop(el)
-            elif dl[el] - d[target] > 0:
+            elif d[el] - d[target] > 0:
                 count += d[target] * d[el]
                 d[el] = d[el] - d[target]
                 d.pop(target)
