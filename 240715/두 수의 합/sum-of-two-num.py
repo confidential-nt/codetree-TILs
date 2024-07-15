@@ -56,3 +56,5 @@ def solution():
             count[elem] = 1
 
     print(ans)
+
+solution()
