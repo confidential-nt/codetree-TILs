@@ -34,6 +34,7 @@
 
 # solution()
 
+# 주의해야할 점: 각 수를 이미 썼다고 다신 못쓰는 게 아님. 그냥 서로 다른 위치의 수만 사용하면 되는거임...
 def solution():
     # 변수 선언 및 입력:
     n, k = tuple(map(int, input().split()))
