@@ -20,8 +20,9 @@ def solution():
             # if d[el] == 0:
             #     d.pop(el)
             if d[el] - d[target] == 0:
-                count += (d[el] * 2)
+                count += d[el]
                 if el == target:
+                    count *= 2
                     d.pop(el)
                     continue
                 d.pop(target)
