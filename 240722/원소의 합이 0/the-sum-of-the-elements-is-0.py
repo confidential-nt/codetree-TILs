@@ -23,12 +23,11 @@ def solution():
             cd_dict[key] += 1
     
     
-    
     count = 0
     
-    for ab_key in ab_dict.keys():
-        for cd_key in cd_dict.keys():
+    for ab_key, ab_val in ab_dict.items():
+        for cd_key, cd_val in cd_dict.items():
             if ab_key + cd_key == 0:
-                count += (ab_dict[ab_key] * cd_dict[cd_key])
+                count += (ab_val * cd_val)
     print(count)
 solution()
