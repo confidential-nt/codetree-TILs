@@ -29,6 +29,6 @@ def solution():
     for ab_key in ab_dict.keys():
         for cd_key in cd_dict.keys():
             if ab_key + cd_key == 0:
-                count += 1
+                count += (ab_dict[ab_key] * cd_dict[cd_key])
     print(count)
 solution()
