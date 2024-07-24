@@ -7,7 +7,7 @@ def solution():
         d[s] += 1
     
     finish = False
-    for key, value in sorted(d.items(), key=lambda x: x[0]):
+    for key, value in d.items():
         if value == 1:
             print(key)
             finish = True
