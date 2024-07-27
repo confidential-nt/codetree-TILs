@@ -48,7 +48,7 @@ def solution2():
             # a와 b의 자리를 바꿔줍니다.
             # 이때 자리가 변화한 값은 arr[a]와 arr[b]밖에 없습니다.
             # 이 값들만 새로운 자리를 HashSet에 넣어 저장합니다.
-            arr[a], arr[b] = arr[b], arr[a]
+            arr[a], arr[b] = arr[b], arr[a] # 자리 바꾸는 법 주목
 
             if a not in s[arr[a]]:
                 s[arr[a]].add(a)
@@ -63,6 +63,7 @@ def solution2():
         print(ans[i])
 
 
-solution2()
+solution()
 
-# 풀다보니.. count 하는 거에 중복제거 필요하겠더라 -> dict 대신 set
+# 시뮬레이션으로 풀다보니.. count 하는 거에 중복제거 필요하겠더라 -> dict 대신 set
+# items()로 푸는 것보다는 그냥 배열쓰는게 더 빠를 것 같긴함.
