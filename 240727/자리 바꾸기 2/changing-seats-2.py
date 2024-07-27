@@ -24,3 +24,5 @@ def solution():
 
 
 solution()
+
+# 풀다보니.. count 하는 거에 중복제거 필요하겠더라 -> dict 대신 set
