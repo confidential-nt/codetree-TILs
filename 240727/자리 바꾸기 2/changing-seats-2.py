@@ -1,11 +1,11 @@
 def solution():
     n,k = map(int, input().split())
     changes = [tuple(map(int, input().split())) for _ in range(k)]
-    arr = list(range(1,6))
+    arr = list(range(1,n + 1))
     count = {}
-    for i in range(1,6):
+    for i in range(1, n + 1):
         if i not in count:
-            count[i] = set()
+            count[i] = set({i})
     # 3k.
     for i in range(3 * k):
         index = i % k
@@ -20,9 +20,6 @@ def solution():
         arr[b - 1] = temp
         
     for item in count.values():
-        if len(item) == 0:
-            print(1)
-            continue
         print(len(item))
 
 
