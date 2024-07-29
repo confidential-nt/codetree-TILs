@@ -11,7 +11,7 @@ def solution():
         for i in range(n):
             a1 = a[i][x] + a[i][y] + a[i][z]
             s.add(a1)
-        
+
         is_possible = True
         for i in range(n):
             b1 = b[i][x] + b[i][y] + b[i][z]
@@ -25,3 +25,5 @@ def solution():
     print(count)
 
 solution()
+
+# 조건을 잘못이해한듯.. 같은 문자열이 그 어느곳에서도 있어선 안됨 (위치와 관계없이. 나는 위치가 다르면 ㄱㅊ은줄.)
